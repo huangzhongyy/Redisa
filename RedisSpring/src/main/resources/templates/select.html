@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>用户名</td>
+        <td>密码</td>
+        <td>日期</td>
+    </tr>
+
+    <!-- 查询全部显示在页面上 -->
+
+    <tr th:each="z,nsStat:${list}" th:class="${nsStat.odd}?'odd'">
+        <td th:text="${z.uid}">00000000</td>
+        <td th:text="${z.uname}" >匿名</td>
+        <td th:text="${z.password}">000000</td>
+        <!--转换日期格式-->
+        <td th:text="${#dates.format(z.borddate,'yyyy-MM-dd')}">2019-2-2</td>
+    </tr>
+
+</table>
+
+
+</body>
+</html>

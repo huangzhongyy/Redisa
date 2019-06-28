@@ -1,0 +1,73 @@
+server:
+  servlet:
+    context-path: /boot
+
+ #mybatis配置
+mybatis:
+  type-aliases-package: com.cssl.pojo
+  configuration:
+    auto-mapping-behavior: full
+    use-generated-keys: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///guanli?serverTimezone=UTC
+    username: root
+    password: 125927
+
+#spring:
+  #静态文件请求匹配方式
+  mvc:
+    static-path-pattern: /**
+  #修改默认的静态寻址资源目录
+  resources:
+    static-locations: classpath:/templates/,classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+
+#thymeleaf start
+  thymeleaf:
+    encoding: UTF-8
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+#thymeleaf end
+
+# Redis数据库
+  redis:
+    database: 0
+    #host: 192.168.191.128
+    #port: 6380
+    password: huangzhong
+    timeout: 1000s
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 5
+        min-idle: -1
+
+# mongodb数据库
+  data:
+    mongodb:
+      uri: mongodb://testrw:testrw@192.168.191.130:27017/test
+      #uri: mongodb://localhost:27017/test
+
+
+
+
+    cluster:
+      nodes:
+      - 192.168.191.130:6379
+      - 192.168.191.130:6380
+      - 192.168.191.130:6381
+
+    sentinel:
+      master: mymaster
+      nodes:
+      - 192.168.191.130:26379
+
+
+
+
+
